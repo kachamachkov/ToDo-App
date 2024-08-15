@@ -1,17 +1,12 @@
-import './App.css';
+import ToDoList from './ToDoList';
 
 function App() {
 
-  return (
-    <>
-    
-    <div className="container">
-      <h1>To Do App</h1>
-
-      
-    </div>
-    </>
-  );
+    return (
+        <>
+            <ToDoList />
+        </>
+    );
 }
 
 export default App;
