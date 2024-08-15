@@ -4,6 +4,7 @@ export default function ToDoList() {
 
     const [tasks, setTasks] = useState(['Walk the dog', 'Buy groceries', 'Go to the gym']);
     const [newTask, setNewTask] = useState('');
+    const [error, setError] = useState('');
 
     function handleInputChange(event) {
         setNewTask(event.target.value);
@@ -12,10 +13,15 @@ export default function ToDoList() {
 
     function addTask() {
 
-        if (newTask == '') {
+        if (newTask.trim() == '') {
             return;
         }
-        setTasks(t => [...t, newTask]);
+
+        if (newTask.length >= 40) {
+            setError('Please enter a task that is less than 40 characters long.');
+            return;
+        }
+        setTasks(t => [...t, newTask.trim()]);
         setNewTask('');
 
     }
@@ -53,7 +59,7 @@ export default function ToDoList() {
             <h1>To-Do-List</h1>
             <div>
                 <input type="text"
-                    placeholder="Enter a new task..."
+                    placeholder={"Enter a new task..."}
                     value={newTask}
                     onChange={handleInputChange}
 
@@ -67,7 +73,12 @@ export default function ToDoList() {
                     Add
                 </button>
 
+                <div className='error'>
+                    {error}
+                </div>
             </div>
+
+
 
             <ol>
                 {tasks.map((task, index) =>
