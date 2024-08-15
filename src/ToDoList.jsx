@@ -14,12 +14,12 @@ export default function ToDoList() {
 
     }
 
-    function deleteTask() { }
+    function deleteTask(index) { }
 
     function moveTaskUp(index) { };
 
 
-    function moveTaskDown() { };
+    function moveTaskDown(index) { };
 
 
 
@@ -50,6 +50,12 @@ export default function ToDoList() {
                         <span className='text'>{task}</span>
                         <button className='delete-button' onClick={() => deleteTask(index)}>
                             Delete
+                        </button>
+                        <button className='move-button' onClick={() => moveTaskUp(index)}>
+                            ⬆️
+                        </button>
+                        <button className='move-button' onClick={() => moveTaskDown(index)}>
+                            ⬇️
                         </button>
                     </li>
 
